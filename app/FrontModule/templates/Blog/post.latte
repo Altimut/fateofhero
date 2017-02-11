@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{$data->title} | FateOfHero - blog</title>
+    <style>
+        nav {
+            text-align:center;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            display:inline-block;
+            list-style: none;
+        }
+        nav li {
+            display:inline-block;
+            height: 50px;
+        }
+        nav li a {
+            display: block;
+            padding: 12px;
+            font-size: 17px;
+            text-decoration: none;
+            color: #343434;
+            -webkit-transition: border-bottom .25s linear;
+            transition: border-bottom .25s linear;
+        }
+        nav li a:hover {
+            color: #7a7a7a;
+            border-bottom: solid;
+            border-bottom-color: #fff;
+        }
+        nav ul.right-soc {
+            float:right;
+        }
+        nav ul.right-soc li a{
+            padding:0px;
+        }
+        nav ul.right-soc li a img {
+            width: 17px;
+            padding: 12px;
+        }
+
+    </style>
+</head>
+<body style="margin: 0;">
+<div id="header">
+    <nav>
+        <ul id="menu">
+            <li><a href="/">Domů</a></li>
+            <li data-menuanchor="o-hre"><a href="/#o-hre">O hře</a></li>
+            <li data-menuanchor="pribeh"><a href="/#pribeh">Příběh</a></li>
+            <li data-menuanchor="studio"><a href="/#studio">Studio</a></li>
+            <li data-menuanchor="tym"><a href="/#tym">Tým</a></li>
+            <li data-menuanchor="novinky"><a href="/#novinky">Novinky</a></li>
+            <li data-menuanchor="galerie"><a href="/#galerie">Galerie</a></li>
+            <li data-menuanchor="kontakt"><a href="/#kontakt">Kontakt</a></li>
+        </ul>
+        <ul class="right-soc">
+            <li><a href="#"><img src="{$basePath}/images/facebook.png"/></a></li>
+            <li><a href="#"><img src="{$basePath}/images/yt.png"/></a></li>
+        </ul>
+    </nav>
+</div>
+
+<div>
+    <div>
+        <div style="background:#f1f1f1; padding-bottom: 20px;">
+
+            <div style="height:50px"></div>
+            <div style="max-width:60%;width:700px;margin:0 auto;background:#42A5F5;color:#ffffff;font-family:'Verdana','Arial';font-size:17px;line-height:1.0em;text-align:center;border:1px solid #2776ec;border-bottom:0 #d3d3d3;padding:0 50px 20px">
+            </div>
+
+            <div style="text-align: center; max-width:60%;width:700px;margin-bottom:10px; margin:0 auto;background:#fff;color:#333333;border:1px solid #d3d3d3;font-family:'Verdana','Arial';border-top-width:0;font-size:17px;line-height:1.3em;padding:20px 50px">
+                <p>
+                <h2>{$data->title}</h2></p>
+                <hr>
+                <table style="text-align: center; margin:auto;">
+                    <tr>
+                        <th>Autor</th>
+                        <td>{$data->ref('users','autor')->username}</td>
+                    </tr>
+                    <tr>
+                        <th>Datum publikace</th>
+                        <td>{$data->date|date:'d.m.Y'}</td>
+                    </tr>
+                </table>
+                <br>
+                <div style="font-size: 15px; margin: 20px 0;padding-left: 1.5rem;text-align: left">{$data->body|noescape}</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

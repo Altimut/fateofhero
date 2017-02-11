@@ -1,0 +1,114 @@
+{block content}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1 n:block=title>
+                Uživatelé
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-6 col-xs-6">
+                            <div class="box box-info animated fadeInUp">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Předregistrace uživatele</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                    class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <p class="text-red">Vytvořením předregistrace odešlete na email uživatele instrukce
+                                        pro
+                                        dokončení registrace.</p>
+                                    {snippet formprereg}
+                                    <form class="ajax" n:name=createUserForm>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                            <input n:name=email type="email" class="form-control" placeholder="Email">
+                                        </div>
+                                        <br>
+                                        <button n:name=send type="submit" class="btn btn-info btn-flat">Odeslat</button>
+                                    </form>
+                                    {/snippet}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-6 col-xs-6">
+                            <div class="box box-info animated fadeInUp">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Seznam Předregistrací</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                    class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding">
+                                {snippet prereglist}
+                                    <table class="table table-striped">
+                                        <tbody>
+                                        <tr>
+                                            <th style="text-align: center;">Email</th>
+                                            <th style="text-align: center;">Zrušit</th>
+                                        </tr>
+                                        {foreach $requestregs as $reg}
+                                            <tr>
+                                                <td>{$reg->email}</td>
+                                                <td><a type="button"
+                                                       class="btn btn-block btn-danger btn-flat ajax" n:href="deletereg! $reg->email">Zrušit</a>
+                                                </td>
+                                            </tr>
+                                        {/foreach}
+                                        </tbody>
+                                    </table>
+                                    {/snippet}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="box box-info animated fadeInUp">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Seznam uživatelů</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th style="text-align: center;">Username</th>
+                                    <th style="text-align: center;">Email</th>
+                                    <th style="text-align: center;">Křestní jméno</th>
+                                    <th style="text-align: center;">Příjmení</th>
+                                    <th style="text-align: center;">Edit</th>
+                                </tr>
+                                {foreach $userlist as $item}
+                                    <tr>
+                                        <td style="text-align: center;">{$item->username}</td>
+                                        <td style="text-align: center;">{$item->email}</td>
+                                        <td style="text-align: center;">{$item->fname}</td>
+                                        <td style="text-align: center;">{$item->sname}</td>
+                                        {if $pexedit === 1}
+                                            <td style="text-align: center;"><a n:href="Users:edit $item->id"
+                                                    class="btn btn-warning btn-flat">Edit</a></td>{else}
+                                            <td></td>{/if}
+                                    </tr>
+                                {/foreach}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{/block}

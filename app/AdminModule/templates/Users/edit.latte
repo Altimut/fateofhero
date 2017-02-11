@@ -1,0 +1,84 @@
+{block content}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1 n:block=title>
+                Úprava účtu uživatele {$data->username}
+            </h1>
+        </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-5 col-sm-4 col-xs-12">
+                <div class="box box-info animated fadeInUp">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Základní nastavení </h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <table class="table table-striped">
+                            <tr><td>Uživatelské jméno:</td><td>{$data->username}</td></tr>
+                            <tr><td>E-mail:</td><td><code>{$data->email}</code></td></tr>
+                            <tr><td>Křestní jméno:</td><td>{$data->fname}</td></tr>
+                            <tr><td>Příjmení:</td><td>{$data->sname}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="box box-info animated fadeInUp">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Avatar </h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-4 col-xs-12">
+                <div class="box box-info animated fadeInUp">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Práva uživatele</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <form n:name=usereditForm>
+                            <table class="table">
+                                <tr>
+                                    <td class="form-group"><input n:name=login class="icheck-green" type="radio" value="1" name="login" {if $pex->login === 1}checked{else}{/if}> Povolit
+                                        <input n:name=login class="icheck-red" type="radio" name="login" value="0" {if $pex->login === 0}checked{else}{/if}> Zakázat</td>
+                                    <td>Přihlašování</td>
+                                </tr>
+                                <tr>
+                                    <td class="form-group"><input n:name=blog class="icheck-green" type="radio" value="1" name="blog" {if $pex->blog === 1}checked{else}{/if}> Povolit
+                                        <input n:name=blog class="icheck-red" type="radio" name="blog" value="0" {if $pex->blog === 0}checked{else}{/if}> Zakázat</td>
+                                    <td>Psaní/úprava Příspěvků na blogu</td>
+                                </tr>
+                                <tr>
+                                    <td class="form-group"><input n:name=teamedit class="icheck-green" type="radio" value="1" name="teamedit" {if $pex->teamedit === 1}checked{else}{/if}> Povolit
+                                        <input n:name=teamedit class="icheck-red" type="radio" name="teamedit" value="0" {if $pex->teamedit === 0}checked{else}{/if}> Zakázat</td>
+                                    <td>Úprava členů teamu</td>
+                                </tr>
+                                <tr>
+                                    <td class="form-group"><input n:name=useredit class="icheck-green" value="1" type="radio" name="useredit" {if $pex->useredit === 1}checked{else}{/if}> Povolit
+                                        <input n:name=useredit class="icheck-red" type="radio" value="0" name="useredit"  {if $pex->useredit === 0}checked{else}{/if}> Zakázat</td>
+                                    <td>Úprava Uživatelů</td>
+                                </tr>
+                            </table>
+                            <button  n:name=send type="submit" class="btn btn-primary btn-block btn-flat">Editovat</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    </div>
+{/block}

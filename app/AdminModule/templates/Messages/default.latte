@@ -1,0 +1,65 @@
+{block content}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Zprávy z webu.
+                <small>Kontaktního formuláře.</small>
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    <div class="box box-info animated fadeInUp">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Seznam dotazů z kontaktního formuláře</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>#</th>
+                                    <th>email</th>
+                                    <th>datum</th>
+                                    <th>Akce</th>
+                                </tr>
+                                {foreach $messages as $mess}
+                                    <tr>
+                                        <td>{$mess->id}</td><td>{$mess->email}</td>
+                                        <td>{$mess->date|date:'d.m.Y'}</td>
+                                        <td><a href="#" data-toggle="modal" data-target="#myModal{$mess->id}"
+                                               class="btn btn-flat btn-info">Zobrazit</a> <a n:href="Messages:send $mess->id" class="btn btn-flat btn-warning">Odpovědět</a></td>
+                                    </tr>
+                                    <div class="modal" id="myModal{$mess->id}" role="dialog">
+                                        <div class="modal-dialog" style="margin-top: 60px">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">×</span></button>
+                                                    <h4 class="modal-title">{$mess->email}</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {$mess->message}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-warning btn-flat pull-left"
+                                                            data-dismiss="modal">Zavřít
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                {/foreach}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+{/block}

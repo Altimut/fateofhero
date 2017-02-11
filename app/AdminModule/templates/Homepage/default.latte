@@ -1,0 +1,146 @@
+{block content}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Domovská stránka
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="small-box bg-aqua animated fadeInUp">
+                        <div class="inner">
+                            <h3>{$news}</h3>
+
+                            <p>Novinek</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-newspaper-o"></i>
+                        </div>
+                        <a n:href="Blog:default" class="small-box-footer">
+                            Seznam novinek <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="small-box bg-maroon animated fadeInUp">
+                        <div class="inner">
+                            <h3>{$users}</h3>
+
+                            <p>Uživatelů v administraci</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <a n:href="Users:default" class="small-box-footer">
+                            Seznam uživatelů <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="small-box bg-orange animated fadeInUp">
+                        <div class="inner">
+                            <h3>{$gallery}</h3>
+                            <p>Obrázků v Galerii</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-image"></i>
+                        </div>
+                        <a n:href="Gallery:default" class="small-box-footer">
+                            Nastavení obrázků v galerii <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="small-box bg-green animated fadeInUp">
+                        <div class="inner">
+                            <h3>{$team}</h3>
+                            <p>Členů v teamu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <a n:href="Team:default" class="small-box-footer">
+                            Seznam členů v teamu <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="box box-success animated fadeInUp">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Chat </h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="direct-chat-messages">
+                                {snippet rchat}
+                                    {foreach $messages as $chat}
+                                        {if $chat->user_id === $user->getId()}
+                                            <div class="direct-chat-msg">
+                                        {else}
+                                            <div class="direct-chat-msg right">
+                                        {/if}
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name pull-left">{$chat->ref('users','user_id')->username}</span>
+                                            <span class="direct-chat-timestamp pull-right">{$chat->date|date:'G:i:s j.n'}</span>
+                                        </div>
+                                        <img class="direct-chat-img" src="{$basePath}/adminstyle/dist/img/avatar5.png"
+                                             alt="message user image"><!-- /.direct-chat-img -->
+                                        <div class="direct-chat-text">
+                                            {$chat->message}
+                                        </div>
+                                        </div>
+                                    {/foreach}
+                                {/snippet}
+                            </div>
+                        </div>
+                            <script type="text/javascript">
+                                setInterval(function () {
+                                    $.nette.ajax({
+                                        type: 'post',
+                                        url: {link chatUpdate!}
+                                    });
+                                }, 10000);
+                            </script>
+                        <div class="box-footer" style="display: block;">
+                            {snippet rfchat}
+                                <form class="ajax" n:name=chatForm role="form">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Napište zprávu..."
+                                               class="form-control" n:name=text>
+                                        <span class="input-group-btn">
+                                                <button type="submit" class="btn btn-success btn-flat" n:name=send>Odeslat</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            {/snippet}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="box box-info animated fadeInUp">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"></h3>
+                        </div>
+                        <div class="box-body">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="box box-warning animated fadeInUp">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"></h3>
+                        </div>
+                        <div class="box-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{/block}

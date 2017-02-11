@@ -1,0 +1,141 @@
+{block content}
+    <div class="section " id="section0">
+        <div class="content" style="top: 10%;">
+            <img style="height: auto; width: auto" src="{$basePath}/images/logo.png">
+            <h2 style="margin-top:20px; color:#fff; font-size: 60px;"><span
+                        style="border-bottom-style: solid; border-bottom-color: #fff; border-top-style: solid; border-top-color: #fff;">Nová česká RPG hra.</span>
+            </h2>
+        </div>
+    </div>
+    <div class="section" id="section1">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col l5 m9 s12">
+                <h2>O Hře</h2>
+                <p class="black">Hra Fate of Hero je založená na legendě o mladém hrdinovi, kterou vypráví dědeček svým
+                    vnoučatům před
+                    spaním. Hra se chystá s kompletní českou lokalizací a dabingem. Samotný příběh je založen na
+                    skutečné události převedené do našeho fantasy světa s pohádkovým nádechem.</p>
+                <p class="black">Prvních několik místností, které navštívíte, slouží jako náhrada za nudný tutoriál.
+                    Cílem je osvojení
+                    ovládání a schopnost využít vše, co okolní svět nabízí. Již teď vám můžeme slíbit Open World, který
+                    bude obsahovat velké množství vedlejších misí a skrytých místností. Dále řadu chytlavých miniher a
+                    hádanek, co vám občas zaberou déle času, než byste možná čekali. Za každý dokončený úkol vás bude
+                    čekat odměna v podobě surovin, platidla, nebo zbraní proti zvířatům, příšerám a všemožným
+                    nepřátelským stvořením.</p>
+                <p class="black">Hlavní dominantou hry je příběh na princip vtipné pohádky, ve které si své najde každý,
+                    a to v
+                    jakémkoliv věku!</p>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section2">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col l5 m10 s12 offset-l6 offset-m1">
+                <h2>Příběh</h2>
+                <p class="white">Příběh se odehrává v krutém středověku, kde mocný čaroděj dychtí po věčném životě. Jeho
+                    snažení se upíná
+                    k vytvoření nesmrtelného elixíru. <br>
+                    Nejprve kouzelník stvořil jen několik bytostí, které mu měli posloužit k obstarání
+                    potřebných
+                    ingrediencí, ať už se jednalo o chlup, krev, moč nebo dokonce část orgánu.<br>
+                    Kouzelník byl už velice starý, a proto ho po úspěšném dokončení svého díla samou
+                    radostí ranila mrtvice a
+                    zemřel i se svým tajemstvím ukrytý kdesi v podzemí.<br>
+                    O pár let později, v nedaleké vesnici, žil mladý chlapec, jehož otec skonal v boji s
+                    krvelačnými
+                    skřítky.<br>
+                    Jeho matku, stejně jako většinu bezmocných žen ze vsi, sužuje táhlá a smrtelná
+                    nemoc.<br>
+                    Mladý Leonard jednoho dne na tržnici zaslechne legendu o bájném lektvaru, který léčí
+                    všechny nemoci.<br>
+                    Bez váhání se vydá na cestu i přesto, že vůbec netuší kde začít.<br>
+                    Jakmile však přijde k hranicím temného lesa, zem se otřese a on se propadne do
+                    země.<br>
+                    Od tohoto okamžiku se Leonardovým cílem stává pouze přežít.</p>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section3">
+        <div class="row" style="margin-top: 20px;">
+
+            <div class="col l5 m9 s12 offset-l6">
+                <h2>O studiu</h2>
+                <p  class="black">KedarSoft Studio je nezávislé herní studio založené v roce 2010, které se specializuje
+                    na tvorbu her
+                    v
+                    GameMaker Studio.<br>
+                    Tým je složen z kreativních a nadšených lidí z Čech i Slovenska, kteří jsou připraveni na jakoukoli
+                    šílenost.<br>
+                    Našemu studiu je v současné době připisována jen hrstka malých projektů pro několik firem.<br>
+                    Studio v této podobě vznikalo řadu let a do současné podoby se dostalo až začátkem roku 2015.</p>
+                <div style="text-align: center;"><img style="height: 250px; width: auto;" src="/images/LogoKS-studio.png"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section4">
+        <div class="intro">
+            <h2>Tým</h2>
+            <div class="row">
+                {foreach $teams as $team}
+                    <div class="col l2 m4 s12">
+                        <div class="hovereffect">
+                            <img style="width: 100%;" class="img-responsive"
+                                 src="{$basePath}/images/avatar/{$team->avatar}" alt="">
+                            <div class="overlay"><br>
+                                <h3>{$team->ref('users','users_id')->fname} {$team->ref('users','users_id')->sname}</h3><br>
+                                Pozice: {$team->post}
+                            </div>
+                        </div>
+                    </div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section5">
+        <div class="intro">
+            <h2>Novinky</h2>
+            <div class="row" style="margin-right: 15px;margin-left: 15px;">
+                {foreach $news as $new}
+                    <div class="col l3 s12 m3">
+                        <div class="card grey lighten-2">
+                            <div style="color: #2e2e2e; font-size: 16px;" class="card-content black-text" >
+                                <span class="card-title">{$new->title}</span>
+                                <small  style="font-size: 13px; " class="darken-3"><p>Datum: <span class="deep-orange-text darken-3">{$new->date|date:'d.m.Y'}</span> Autor: {$new->ref('users','autor')->username}</a></p></small>
+
+                            </div>
+                            <div class="card-action">
+                                <a class="deep-orange-text darken-3" n:href="Blog:post $new->id">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section6">
+        <div style="margin-left: 20px; margin-right: 20px;">
+            <h2>Galerie</h2>
+            {foreach $gallerys as $gallery}
+                <a class="fancybox-thumbs" href="{$basePath}/images/gallery/{$gallery->image}"
+                   data-fancybox-group="gallery" title="{$gallery->title}"><img
+                            style="max-height: 100px; max-width: 100px;"
+                            src="{$basePath}/images/gallery/{$gallery->image}" alt=""/></a>
+            {/foreach}
+        </div>
+    </div>
+    <div class="section" id="section7">
+        <div class="intro">
+            <h2>Kontakt</h2>
+            {snippet contact}
+                <form n:name=contactForm>
+                    <table style="text-align: center; margin-left: auto; margin-right: auto;">
+                        <tr><td><input n:name=email type="email" placeholder="Vložte email."></td></tr>
+                        <tr><td><textarea n:name=message rows="3" placeholder="Vložte zprávu"></textarea></td></tr>
+                        <tr><td><input type="checkbox" n:name=checkbox> Antispam</td></tr>
+                        <tr><td><input  n:name=send type="submit" value="Odeslat"></td> </tr>
+                    </table>
+                </form>
+            {/snippet}
+        </div>
+    </div>
+{/block}

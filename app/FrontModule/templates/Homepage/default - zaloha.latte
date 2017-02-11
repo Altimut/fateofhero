@@ -1,0 +1,68 @@
+{block content}
+    <div class="section " id="section0">
+        <div class="content" style="top: 10%;">
+            <img src="{$basePath}/images/logo.png">
+            <h2 style="margin-top:20px; color:#fff; font-size: 60px;"><span style="border-bottom-style: solid; border-bottom-color: #fff; border-top-style: solid; border-top-color: #fff;">Nová česká RPG hra.</span></h2>
+        </div>
+    </div>
+    <div class="section" id="section1">
+        <div class="box">
+            <h1>O HŘE</h1>
+            <p>Hra Fate of Hero je založená na legendě o mladém hrdinovi, kterou vypráví dědeček svým vnoučatům před spaním. Hra se chystá s kompletní českou lokalizací a dabingem. Samotný příběh je založen na skutečné události převedené do našeho fantasy světa s pohádkovým nádechem.</p>
+            <p>Prvních několik místností, které navštívíte, slouží jako náhrada za nudný tutoriál. Cílem je osvojení ovládání a schopnost využít vše, co okolní svět nabízí. Již teď vám můžeme slíbit Open World, který bude obsahovat velké množství vedlejších misí a skrytých místností. Dále řadu chytlavých miniher a hádanek, co vám občas zaberou déle času, než byste možná čekali. Za každý dokončený úkol vás bude čekat odměna v podobě surovin, platidla, nebo zbraní proti zvířatům, příšerám a všemožným nepřátelským stvořením.</p>
+            <p>Hlavní dominantou hry je příběh na princip vtipné pohádky, ve které si své najde každý, a to v jakémkoliv věku!</p>
+        </div>
+    </div>
+    <div class="section" id="section2">
+        <div class="box">
+            <h1>Příběh</h1>
+            <p>Příběh se odehrává v krutém středověku, kde mocný čaroděj dychtí po věčném životě. Jeho snažení se upíná k vytvoření nesmrtelného elixíru. </p>
+            <p>Nejprve kouzelník stvořil jen několik bytostí, které mu měli posloužit k obstarání potřebných ingrediencí, ať už se jednalo o chlup, krev, moč nebo dokonce část orgánu.</p>
+            <p>Kouzelník byl už velice starý, a proto ho po úspěšném dokončení svého díla samou radostí ranila mrtvice a zemřel i se svým tajemstvím ukrytý kdesi v podzemí.</p>
+
+            <p>O pár let později, v nedaleké vesnici, žil mladý chlapec, jehož otec skonal v boji s krvelačnými skřítky.</p>
+            <p>Jeho matku, stejně jako většinu bezmocných žen ze vsi, sužuje táhlá a smrtelná nemoc.</p>
+            <p>Mladý Leonard jednoho dne na tržnici zaslechne legendu o bájném lektvaru, který léčí všechny nemoci.</p>
+            <p>Bez váhání se vydá na cestu i přesto, že vůbec netuší kde začít.</p>
+            <p>Jakmile však přijde k hranicím temného lesa, zem se otřese a on se propadne do země.</p>
+            <p>Od tohoto okamžiku se Leonardovým cílem stává pouze přežít.</p>
+        </div>
+    </div>
+    <div class="section" id="section3">
+        <div class="box">
+            <h1>O studiu</h1>
+            <p>KedarSoft Studio je nezávislé herní studio založené v roce 2010, které se specializuje na tvorbu her v GameMaker Studio.</p>
+            <p>Tým je složen z kreativních a nadšených lidí z Čech i Slovenska, kteří jsou připraveni na jakoukoli šílenost.</p>
+            <p>Našemu studiu je v současné době připisována jen hrstka malých projektů pro několik firem.</p>
+            <p>Studio v této podobě vznikalo řadu let a do současné podoby se dostalo až začátkem roku 2015.</p>
+        </div>
+        <div class="image">
+            <img src="/images/LogoKS-studio.png">
+        </div>
+    </div>
+    <div class="section" id="section4">
+        <div class="intro">
+            <h1>Team</h1>
+        </div>
+    </div>
+    <div class="section" id="section5">
+        <div class="intro">
+            <h2>Novinky</h2>
+            {foreach $news as $new}
+                <p>{$new->title} <code><a href="{plink Blog:post, $new->id}">odkaz</a></code></p>
+            {/foreach}
+        </div>
+    </div>
+    <div class="section" id="section6">
+        <div style="margin-left: 20px; margin-right: 20px;">
+            {foreach $gallerys as $gallery}
+                <a class="fancybox-thumbs" href="{$basePath}/images/gallery/{$gallery->image}" data-fancybox-group="gallery" title="{$gallery->title}"><img style="max-height: 100px; max-width: 100px;" src="{$basePath}/images/gallery/{$gallery->image}" alt="" /></a>
+            {/foreach}
+        </div>
+    </div>
+    <div class="section" id="section7">
+        <div class="intro">
+
+        </div>
+    </div>
+{/block}

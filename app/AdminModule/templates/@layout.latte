@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns:n="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="autor" content="Altisek.eu">
+    <title>{ifset title}{include title|striptags} | {/ifset}FateOfHero Administrace</title>
+    <link rel="stylesheet" href="{$basePath}/adminstyle/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{$basePath}/adminstyle/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="{$basePath}/css/animate.css">
+    <link rel="stylesheet" href="{$basePath}/adminstyle/plugins/iCheck/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+    {block scripts}
+    <script src="{$basePath}/adminstyle/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="{$basePath}/adminstyle/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{$basePath}/adminstyle/plugins/iCheck/icheck.js"></script>
+
+    <script>
+        setTimeout(function () {
+            $(".alert").addClass("slideOutRight");
+            setTimeout(function () {
+                $(".row-alert-js").remove();
+            }, 1000);
+        }, 10000);
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+            $('input.icheck-red').iCheck({
+                checkboxClass: 'icheckbox_square-red',
+                radioClass: 'iradio_square-red',
+                increaseArea: '20%' // optional
+            });
+            $('input.icheck-green').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+{/block}
+</head>
+{ifCurrent 'Sign:*'}<body class="hold-transition login-page">{else}<body class="sidebar-mini skin-blue  animated" style="background-color: #ecf0f5">{include '@menu.latte'}{/ifCurrent}
+
+
+{if count($flashes)>0}
+    <div class="row row-alert-js" style="margin-top: 5px; margin-right: 5px; height: 0; z-index= 10;">
+        {foreach $flashes as $flash}
+            <div class="alert alert-{$flash->type} alert-dismissable animated slideInRight col-md-4 col-sm-4 col-lg-3 col-lg-offset-9 col-xs-12 col-sm-offset-9 col-md-offset-9" style="position: fixed;z-index: 20;">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{if $flash->type === 'danger'}Chyba
+                        {elseif $flash->type === 'success'}Úspěch
+                        {elseif $flash->type === 'warning'}Varovávní
+                        {else}Info{/if}!
+                </strong> {$flash->message}
+            </div>
+        {/foreach}
+    </div>
+{/if}
+
+
+{include content}
+
+{ifCurrent 'Sign:*'}{else}
+
+{/ifCurrent}
+</body>
+</html>

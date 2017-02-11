@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FateOfHero </title>
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/grid.css" />
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="{$basePath}/css/jquery.fancybox.css" />
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/scrolloverflow.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/jquery.fullPage.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/jquery.fancybox.pack.js?v=2.1.5"></script>
+	<script type="text/javascript" src="{$basePath}/js/nette.ajax.js"></script>
+
+	<script type="text/javascript">
+        $(function () {
+            $.nette.init();
+        });
+        $("a.ajax").live("click", function (event) {
+            event.preventDefault();
+            $.get(this.href);
+        });
+
+		/* AJAXové odeslání formulářů */
+        $("form.ajax").live("submit", function () {
+            $(this).ajaxSubmit();
+            return false;
+        });
+
+        $("form.ajax :submit").live("click", function () {
+            $(this).ajaxSubmit();
+            return false;
+        });
+	</script>
+	<script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                anchors: ['up', 'o-hre', 'pribeh', 'studio', 'tym', 'novinky', 'galerie','kontakt'],
+                navigation: true,
+                scrollOverflow: true,
+                navigationPosition: 'right',
+                navigationTooltips: ['Nahoru', 'O hře', 'Příběh hry', 'Studio', 'Tým', 'Novinky', 'Galerie', 'Kontakt']
+            });
+
+        });
+        $(document).ready(function() {
+            $('.fancybox').fancybox();
+        });</script>
+	<script type="text/javascript">
+        $('.fancybox-thumbs').fancybox({
+            prevEffect : 'none',
+            nextEffect : 'none',
+
+            closeBtn  : true,
+            arrows    : true,
+            nextClick : true,
+
+            helpers : {
+                thumbs : {
+                    width  : 50,
+                    height : 50
+                }
+            }
+        });
+
+
+	</script>
+
+</head>
+<body>
+
+
+{include '@menu.latte'}
+<div id="fullpage">
+	{include content}
+</div>
+
+
+</body>
+</html>

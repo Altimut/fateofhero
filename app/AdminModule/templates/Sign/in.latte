@@ -1,0 +1,41 @@
+{block content}
+    <div class="login-box">
+        <div class="login-logo animated fadeInUp">
+            <a href="#"><b>Administrace</b> FOH.cz</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="red login-box-msg animated fadeInDown">Musíte se přihlásit pro přístup.</p>
+            <form n:name=signInForm method="post">
+                {if $form->hasErrors()}
+                    {foreach $form->errors as $flash}
+                        <div class="login-box-msg text-red animated flash">{$flash}</div>
+                    {/foreach}
+                {/if}
+                <div class="form-group has-feedback animated fadeInUp">
+                    <input n:name=username type="text" class="form-control" placeholder="Uživatelské jméno">
+                    <span n:name=username class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback animated fadeInUp">
+                    <input n:name=password type="password" class="form-control" placeholder="Heslo">
+                    <span  n:name=password class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck animated fadeInLeft">
+                            <label>
+                                <input n:name=time type="checkbox"> Zůstat přilášený delší dobu
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 animated fadeInRight">
+                        <button  n:name=send type="submit" class="btn btn-primary btn-block btn-flat">Přihlásit se</button>
+                    </div>
+                </div>
+            </form>
+            <a class="animated bounceIn" href="#">Zapoměl jsem heslo</a><br>
+
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+{/block}

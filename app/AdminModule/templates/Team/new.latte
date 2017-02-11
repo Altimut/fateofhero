@@ -1,0 +1,37 @@
+{block content}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Nahrání člena do teamu
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-8 col-sm-10 col-xs-12">
+                    <div class="box box-info animated fadeInUp">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Uploader </h3>
+                        </div>
+                        <div class="box-body">
+                            <form n:name=teamForm>
+                                <div class="form-group">
+                                    <label>Uživatel</label>
+                                    <select  class="form-control select2" n:name=users_id></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Avatar</label>
+                                    <input n:name=avatar type="file" id="exampleInputFile">
+                                </div>
+                                <button n:name=send type="submit" class="btn btn-info btn-flat">Nahrát</button>
+                            </form>
+                        </div>
+                        <div class="box-footer">
+                            Člen musí být zaregistrovaný!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+{/block}

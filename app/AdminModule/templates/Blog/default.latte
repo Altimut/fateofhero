@@ -1,0 +1,108 @@
+{block content}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1 n:block=title>
+                Novinky
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="box box-info animated fadeInUp">
+                        <div class="box-header with-border">
+                            <a n:href="Blog:new" class="btn btn-block btn-flat btn-info">Napsat nový příspěvek</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    {snippet bloglist}
+                        <div class="box box-info animated fadeInUp">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Seznam příspěvků</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th style="text-align: center;">#</th>
+                                        <th style="text-align: center;">Název</th>
+                                        <th style="text-align: center;">Autor</th>
+                                        <th style="text-align: center;">Datum publikace</th>
+                                        <th style="text-align: center;">Edit/Detail</th>
+                                    </tr>
+                                    {foreach $blogs as $blog}
+                                        <tr>
+                                            <td style="text-align: center;">{$blog->id}</td>
+                                            <td style="text-align: center;">{$blog->title}</td>
+                                            <td style="text-align: center;">{$blog->ref('users','autor')->username}</td>
+                                            <td style="text-align: center;">{$blog->date|date:'d.m.Y'}</td>
+                                            <td style=" text-align: center;">
+                                                <a href="#" data-toggle="modal" data-target="#myModal{$blog->id}"
+                                                   class="btn btn-flat btn-info">Zobrazit</a>
+                                                <a n:href="Blog:edit $blog->id"
+                                                        class="btn btn-flat btn-warning">Edit</a>
+                                                <a href="#" data-toggle="modal" data-target="#delmodal{$blog->id}"
+                                                   class="btn btn-flat btn-danger">Smazat</a>
+                                            </td>
+                                        </tr>
+                                        <div class="modal modal-danger" id="delmodal{$blog->id}" role="dialog">
+                                            <div class="modal-dialog" style="margin-top: 60px">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">×</span></button>
+                                                        <h4 class="modal-title">Opravdu si přejete
+                                                            smazat<br><i>"{$blog->title}"</i>?</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Tento krok nelze vrátit zpět! Rozmysli si to.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-warning btn-flat pull-left"
+                                                                data-dismiss="modal">Zavřít
+                                                        </button>
+                                                        <a n:href="delete! $blog->id"
+                                                                class="btn btn-danger btn-flat pull-right ajax">Smazat</a>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <div class="modal" id="myModal{$blog->id}" role="dialog">
+                                            <div class="modal-dialog" style="margin-top: 60px">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">×</span></button>
+                                                        <h4 class="modal-title">{$blog->title}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {$blog->body|noescape}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-warning btn-flat pull-left"
+                                                                data-dismiss="modal">Zavřít
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                    {/foreach}
+                                </table>
+                            </div>
+                        </div>
+                    {/snippet}
+                </div>
+            </div>
+        </section>
+    </div>
+{/block}
